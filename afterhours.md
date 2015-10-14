@@ -4,8 +4,11 @@
 
 ### User Accounts
 Why? Because eventually we're going to disable root
+
 `adduser demo`
+
 `gpasswd -a demo sudo`
+
 `ssh-copy-id demo@SERVER_IP_ADDRESS`
 
 ### SSH Keys
