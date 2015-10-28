@@ -28,7 +28,7 @@ Why? Because eventually we're going to disable root
 List All Chained Rules
 `iptables -L`
 
-List ALl rules as if they were commands
+List All rules as if they were commands
 `iptables -S`
 
 Flush your Settings to Default
@@ -86,7 +86,7 @@ server {
 ```
 
 ### Install Node
-`curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -`
+`curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -`
 `apt-get install -y nodejs`
 
 ### Install PM2
