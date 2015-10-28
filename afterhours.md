@@ -36,11 +36,11 @@ Flush your Settings to Default
 
 First Command
 `iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT`
--A Appends the Rule to the end
--m tells iptables we want to use a module
-conntrack - This module gives access to commands that can be used to make decisions based on the packet's relationship to previous connections.
---cstate - made available to conntrack module -> allows us to match packets based on how they are related to packets we've seen before
--j ACCEPT
+- -A Appends the Rule to the end
+- -m tells iptables we want to use a module
+- conntrack - This module gives access to commands that can be used to make decisions based on the packet's relationship to previous connections.
+- --cstate - made available to conntrack module -> allows us to match packets based on how they are related to packets we've seen before
+- -j ACCEPT
 
 `iptables -I INPUT 1 -i lo -j ACCEPT`
 
