@@ -1,0 +1,10 @@
+#!/bin/sh
+
+SCRIPTS=/root/firewall
+# simply kills the nat and then restarts it
+
+
+$SCRIPTS/kill-nat
+
+
+$SCRIPTS/nat-on
