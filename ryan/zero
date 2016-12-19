@@ -1,0 +1,1 @@
+iptables -Z $1
