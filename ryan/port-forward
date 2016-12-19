@@ -1,0 +1,14 @@
+########## Remote Desktop Stuff ########## 
+
+#iptables -t nat -A PREROUTING -p tcp --dport 3389 -j DNAT --to 10.0.0.2:3389
+
+########## END Remote Desktop Stuff ##########
+
+#iptables -t nat -A PREROUTING -s 129.82.198.0/24 -p tcp --dport 3389 -j DNAT --to 192.168.0.235:3389
+#iptables -t nat -A PREROUTING -s erc-bofh.engr.colostate.edu -p tcp --dport 3389 -j DNAT --to 192.168.0.235:3389
+
+#iptables -t nat -A PREROUTING -s phb.btfh.net   -p udp --dport 3389 -j DNAT --to 192.168.0.235:3389
+#iptables -t nat -A PREROUTING -s 129.82.198.0/24  -p udp --dport 3389 -j DNAT --to 192.168.0.235:3389
+#iptables -t nat -A PREROUTING -s erc-bofh.engr.colostate.edu -p udp --dport 3389 -j DNAT --to 192.168.0.235:3389
+
+###################################################################
