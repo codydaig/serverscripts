@@ -1,0 +1,242 @@
+#!/bin/sh
+
+echo "1" > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts 
+echo "0" > /proc/sys/net/ipv4/conf/all/accept_source_route 
+echo "0" > /proc/sys/net/ipv4/conf/all/accept_redirects 
+echo "1" > /proc/sys/net/ipv4/icmp_ignore_bogus_error_responses 
+echo "1" > /proc/sys/net/ipv4/tcp_syncookies
+
+
+###################################################
+
+################# state tracking rules #####################
+iptables -A INPUT  -p icmp -m state --state ESTABLISHED,RELATED     -j ACCEPT
+iptables -A INPUT  -m state --state ESTABLISHED                     -j ACCEPT
+iptables -A OUTPUT -p icmp -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+iptables -A OUTPUT -m state --state NEW,ESTABLISHED                 -j ACCEPT
+###########################
+
+######################## allow local lan traffic #########################
+iptables -A INPUT -i eth1 -j ACCEPT
+##########################################################################
+
+
+##################### abusive asshole section ######################
+
+
+# M$ tracking bullshit
+iptables -A FORWARD -d vortex-win.data.microsoft.com         -j DROP
+iptables -A FORWARD -d settings-win.data.microsoft.com       -j DROP
+iptables -A FORWARD -d watson.telemetry.microsoft.com        -j DROP
+iptables -A FORWARD -d watson.telemetry.microsoft.com.nsatc.net      -j DROP
+iptables -A FORWARD -d v10.vortex-win.data.microsoft.com     -j DROP
+iptables -A FORWARD -d telecommand.telemetry.microsoft.com   -j DROP
+iptables -A FORWARD -d telecommand.telemetry.microsoft.com.nsatc.net -j DROP 
+iptables -A FORWARD -d oca.telemetry.microsoft.com           -j DROP
+iptables -A FORWARD -d oca.telemetry.microsoft.com.nsatc.net -j DROP
+iptables -A FORWARD -d sqm.telemetry.microsoft.com           -j DROP
+iptables -A FORWARD -d sqm.telemetry.microsoft.com.nsatc.net -j DROP
+iptables -A FORWARD -d oca.telemetry.microsoft.com.nsatc.net -j DROP
+iptables -A FORWARD -d pre.footprintpredict.com              -j DROP
+iptables -A FORWARD -d reports.wes.df.telemetry.microsoft.com        -j DROP
+iptables -A FORWARD -d cs1.wpc.v0cdn.net                     -j DROP
+iptables -A FORWARD -d statsfe1.ws.microsoft.com             -j DROP
+iptables -A FORWARD -d df.telemetry.microsoft.com            -j DROP
+
+
+
+
+
+############ block spoofing (bogons)##########################
+
+iptables -A INPUT -i eth0 -s 0.0.0.0/8      -j DROP
+iptables -A INPUT -i eth0 -s 10.0.0.0/8     -j DROP
+iptables -A INPUT -i eth0 -s 223.0.0.0/8    -j DROP
+iptables -A INPUT -i eth0 -s 224.0.0.0/3    -j DROP
+
+######################################################
+
+######## Block garbage packets #######################
+iptables -A INPUT -i eth0 -d 255.255.255.255 -j DROP
+
+######################################################
+
+
+################################################################
+
+
+###### allow whois lookups ##############
+iptables -A INPUT -p tcp --sport 43 -j ACCEPT
+#########################################
+
+####### accept loop back traffic  ##############################################
+iptables -A INPUT -i lo -j ACCEPT
+################################################################################
+
+
+
+################################################################
+
+
+##### block netbios from going to the world from the lan #########
+iptables -A FORWARD  -p tcp --dport 139  -j DROP
+iptables -A FORWARD  -p udp --dport 138  -j DROP
+iptables -A FORWARD  -p udp --dport 445  -j DROP
+iptables -A FORWARD  -p tcp --dport 445  -j DROP
+###################################################################
+
+##### block apnic /lacnic / ripe  / afrinic ################
+
+iptables -A INPUT -s 1.0.0.0/8   -j DROP
+iptables -A INPUT -s 2.0.0.0/8   -j DROP
+iptables -A INPUT -s 5.0.0.0/8   -j DROP
+iptables -A INPUT -s 14.0.0.0/8  -j DROP
+iptables -A INPUT -s 27.0.0.0/8  -j DROP
+iptables -A INPUT -s 31.0.0.0/8  -j DROP
+iptables -A INPUT -s 36.0.0.0/8  -j DROP
+iptables -A INPUT -s 37.0.0.0/8  -j DROP
+iptables -A INPUT -s 39.0.0.0/8  -j DROP
+iptables -A INPUT -s 41.0.0.0/8  -j DROP
+iptables -A INPUT -s 42.0.0.0/8  -j DROP
+iptables -A INPUT -s 43.0.0.0/8  -j DROP
+iptables -A INPUT -s 45.112.0.0/12 -j DROP
+iptables -A INPUT -s 46.0.0.0/8  -j DROP
+iptables -A INPUT -s 49.0.0.0/8  -j DROP
+iptables -A INPUT -s 57.0.0.0/8  -j DROP
+iptables -A INPUT -s 58.0.0.0/8  -j DROP
+iptables -A INPUT -s 59.0.0.0/8  -j DROP
+iptables -A INPUT -s 60.0.0.0/8  -j DROP
+iptables -A INPUT -s 61.0.0.0/8  -j DROP
+iptables -A INPUT -s 62.0.0.0/8  -j DROP
+iptables -A INPUT -s 77.0.0.0/8  -j DROP
+iptables -A INPUT -s 78.0.0.0/8  -j DROP
+iptables -A INPUT -s 79.0.0.0/8  -j DROP
+iptables -A INPUT -s 80.0.0.0/8  -j DROP
+iptables -A INPUT -s 81.0.0.0/8  -j DROP
+iptables -A INPUT -s 82.0.0.0/8  -j DROP
+iptables -A INPUT -s 83.0.0.0/8  -j DROP
+iptables -A INPUT -s 84.0.0.0/8  -j DROP
+iptables -A INPUT -s 85.0.0.0/8  -j DROP
+iptables -A INPUT -s 86.0.0.0/8  -j DROP
+iptables -A INPUT -s 87.0.0.0/8  -j DROP
+iptables -A INPUT -s 88.0.0.0/8  -j DROP
+iptables -A INPUT -s 89.0.0.0/8  -j DROP
+iptables -A INPUT -s 90.0.0.0/8  -j DROP
+iptables -A INPUT -s 91.0.0.0/8  -j DROP
+iptables -A INPUT -s 92.0.0.0/8  -j DROP
+iptables -A INPUT -s 93.0.0.0/8  -j DROP
+iptables -A INPUT -s 94.0.0.0/8  -j DROP
+iptables -A INPUT -s 95.0.0.0/8  -j DROP
+
+iptables -A INPUT -s 101.0.0.0/8 -j DROP
+iptables -A INPUT -s 102.0.0.0/8 -j DROP
+iptables -A INPUT -s 103.0.0.0/8 -j DROP
+iptables -A INPUT -s 105.0.0.0/8 -j DROP
+iptables -A INPUT -s 106.0.0.0/8 -j DROP
+iptables -A INPUT -s 109.0.0.0/8 -j DROP
+iptables -A INPUT -s 110.0.0.0/8 -j DROP
+iptables -A INPUT -s 111.0.0.0/8 -j DROP
+iptables -A INPUT -s 112.0.0.0/8 -j DROP
+iptables -A INPUT -s 113.0.0.0/8 -j DROP
+iptables -A INPUT -s 114.0.0.0/8 -j DROP
+iptables -A INPUT -s 115.0.0.0/8 -j DROP
+iptables -A INPUT -s 116.0.0.0/8 -j DROP
+iptables -A INPUT -s 117.0.0.0/8 -j DROP
+iptables -A INPUT -s 118.0.0.0/8 -j DROP
+iptables -A INPUT -s 119.0.0.0/8 -j DROP
+iptables -A INPUT -s 120.0.0.0/8 -j DROP
+iptables -A INPUT -s 121.0.0.0/8 -j DROP
+iptables -A INPUT -s 122.0.0.0/8 -j DROP
+iptables -A INPUT -s 123.0.0.0/8 -j DROP
+iptables -A INPUT -s 124.0.0.0/8 -j DROP
+iptables -A INPUT -s 125.0.0.0/8 -j DROP
+iptables -A INPUT -s 126.0.0.0/8 -j DROP
+iptables -A INPUT -s 133.0.0.0/8 -j DROP
+iptables -A INPUT -s 141.0.0.0/8 -j DROP
+iptables -A INPUT -s 145.0.0.0/8 -j DROP
+iptables -A INPUT -s 150.0.0.0/8 -j DROP
+iptables -A INPUT -s 151.0.0.0/8 -j DROP
+iptables -A INPUT -s 154.0.0.0/8 -j DROP
+iptables -A INPUT -s 163.0.0.0/8 -j DROP
+iptables -A INPUT -s 171.0.0.0/8 -j DROP
+iptables -A INPUT -s 175.0.0.0/8 -j DROP
+iptables -A INPUT -s 176.0.0.0/8 -j DROP
+iptables -A INPUT -s 177.0.0.0/8 -j DROP
+iptables -A INPUT -s 178.0.0.0/8 -j DROP
+iptables -A INPUT -s 179.0.0.0/8 -j DROP
+iptables -A INPUT -s 180.0.0.0/8 -j DROP
+iptables -A INPUT -s 181.0.0.0/8 -j DROP
+iptables -A INPUT -s 182.0.0.0/8 -j DROP
+iptables -A INPUT -s 183.0.0.0/8 -j DROP
+iptables -A INPUT -s 185.0.0.0/8 -j DROP
+iptables -A INPUT -s 186.0.0.0/8 -j DROP
+iptables -A INPUT -s 187.0.0.0/8 -j DROP
+iptables -A INPUT -s 188.0.0.0/8 -j DROP
+iptables -A INPUT -s 189.0.0.0/8 -j DROP
+iptables -A INPUT -s 190.0.0.0/8 -j DROP
+iptables -A INPUT -s 191.0.0.0/8 -j DROP
+iptables -A INPUT -s 193.0.0.0/8 -j DROP
+iptables -A INPUT -s 194.0.0.0/8 -j DROP
+iptables -A INPUT -s 195.0.0.0/8 -j DROP
+iptables -A INPUT -s 196.0.0.0/8 -j DROP
+iptables -A INPUT -s 197.0.0.0/8 -j DROP
+
+iptables -A INPUT -s 200.0.0.0/8   -j DROP
+iptables -A INPUT -s 201.0.0.0/8   -j DROP
+iptables -A INPUT -s 202.0.0.0/8   -j DROP
+iptables -A INPUT -s 203.0.0.0/8   -j DROP
+iptables -A INPUT -s 210.0.0.0/8   -j DROP
+iptables -A INPUT -s 211.0.0.0/8   -j DROP
+iptables -A INPUT -s 212.0.0.0/8   -j DROP
+iptables -A INPUT -s 213.0.0.0/8   -j DROP
+iptables -A INPUT -s 217.0.0.0/8   -j DROP
+iptables -A INPUT -s 218.0.0.0/8   -j DROP
+iptables -A INPUT -s 219.0.0.0/8   -j DROP
+iptables -A INPUT -s 220.0.0.0/8   -j DROP
+iptables -A INPUT -s 221.0.0.0/8   -j DROP
+iptables -A INPUT -s 222.0.0.0/8   -j DROP
+iptables -A INPUT -s 223.0.0.0/8   -j DROP
+
+
+
+#############################################################################################
+
+
+
+################### linux services accessible from outside #################### 
+
+
+######## ports for plex ###############################################
+iptables -A INPUT -p tcp --dport 32400 -j ACCEPT 
+
+#######################################################################
+
+
+############### ssh   #################################
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+######################################################
+
+
+
+############### allow some icmp ###########################
+iptables -A INPUT -p icmp --icmp-type 0 -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT
+###########################################################
+
+
+
+
+
+
+
+############### block icmp that i dont want ###################################
+iptables -A INPUT -p icmp -j DROP
+################################################################################
+
+
+
+######## block all outside to inside connections not already permitted #########
+iptables -A INPUT -i eth0 -p udp   -j REJECT
+iptables -A INPUT -i eth0 -p tcp   -j DROP
+iptables -A INPUT -i eth0          -j DROP
+################################################################################
