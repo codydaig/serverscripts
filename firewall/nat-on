@@ -1,0 +1,12 @@
+#!/bin/sh
+SCRIPTS=/root/serverscripts/firewall
+
+# turns on basic nat functionallity, but no port forwarding or firewalling (yet)
+$SCRIPTS/enable-nat
+
+# activate firewall
+# the order that these scripts are called in is critical
+$SCRIPTS/firewall
+
+# now forward ports for the servers
+$SCRIPTS/port-forward

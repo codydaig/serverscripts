@@ -1,0 +1,30 @@
+#!/bin/sh
+
+echo "1" > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+echo "0" > /proc/sys/net/ipv4/conf/all/accept_source_route
+echo "0" > /proc/sys/net/ipv4/conf/all/accept_redirects
+echo "1" > /proc/sys/net/ipv4/icmp_ignore_bogus_error_responses
+echo "1" > /proc/sys/net/ipv4/tcp_syncookies
+
+iptables -A INPUT  -p icmp -m state --state ESTABLISHED,RELATED     -j ACCEPT
+iptables -A INPUT  -m state --state ESTABLISHED                     -j ACCEPT
+iptables -A OUTPUT -p icmp -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+iptables -A OUTPUT -m state --state NEW,ESTABLISHED                 -j ACCEPT
+
+## Allow Local Traffic
+iptables -A INPUT -i eth1 -j ACCEPT
+
+## I think this is for the XBOX? 
+iptables -A INPUT -p udp --dport 3074 -j ACCEPT
+
+## allow loop back traffic (localhost)
+iptables -A INPUT -i lo -j ACCEPT
+
+## allow some icmp traffic and block the rest
+iptables -A INPUT -p icmp --icmp-type 0 -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT
+iptables -A INPUT -p icmp -j DROP
+
+iptables -A INPUT -i ppp0 -p udp   -j REJECT
+iptables -A INPUT -i ppp0 -p tcp   -j DROP
+iptables -A INPUT -i ppp0          -j DROP

@@ -1,0 +1,7 @@
+# kills all port forwarding, nat functionality, and firewalling
+
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t mangle -F
+
