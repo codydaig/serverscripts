@@ -17,6 +17,10 @@ iptables -A INPUT -i eth1 -j ACCEPT
 ## allow loop back traffic (localhost)
 iptables -A INPUT -i lo -j ACCEPT
 
+
+## allow wireguard traffic
+iptables -A INPUT -i wg0 -j ACCEPT
+
 ## SSH to Router
 iptables -A INPUT -s ghost.btfh.net -d 192.174.24.104 -p tcp --dport 22 -j ACCEPT
 
