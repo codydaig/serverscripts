@@ -55,3 +55,23 @@ https://help.ubuntu.com/community/ADSLPPPoE
 apt install wireguard
 
 https://www.stavros.io/posts/how-to-configure-wireguard/
+
+### Generating new Keys
+
+```
+cd ~/wireguard/clients
+cd cody-iphone
+../../keygen
+cat client_public_key 
+```
+
+Copy the public key and paste into the file and increment the IP
+
+```
+vim /etc/wireguard/wg0.conf
+```
+
+```
+/root/serverscripts/wireguard 
+```
+

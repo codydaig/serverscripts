@@ -7,8 +7,8 @@ iptables -t nat -A PREROUTING -d 192.174.24.104 -p tcp --dport 32400 -j DNAT --t
 iptables -t nat -A PREROUTING -s chris.btfh.net -d 192.174.24.104 -p tcp --dport 22 -j DNAT --to 10.0.1.15:22
 
 ## Web .105
-#iptables -t nat -A PREROUTING -d 192.174.24.105 -p tcp --dport 80 -j DNAT --to 10.0.1.19:80
-#iptables -t nat -A PREROUTING -d 192.174.24.105 -p tcp --dport 443 -j DNAT --to 10.0.1.19:443
+iptables -t nat -A PREROUTING -d 192.174.24.105 -p tcp --dport 80 -j DNAT --to 10.0.1.19:80
+iptables -t nat -A PREROUTING -d 192.174.24.105 -p tcp --dport 443 -j DNAT --to 10.0.1.19:443
 
 ## UniFi Controller .106
 iptables -t nat -A PREROUTING -d 192.174.24.106 -p tcp --dport 8080 -j DNAT --to 10.0.1.17:8080
