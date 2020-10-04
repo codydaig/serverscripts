@@ -1,9 +1,15 @@
 ## Example
-#iptables -t nat -A PREROUTING -s ghost.btfh.net -d 192.174.24.105 -p tcp --dport 22 -j DNAT --to 10.0.1.15:22
 # Allows ghost.btfh.net when SSHing to 192.174.24.105 to send the traffic to 10.0.1.15
+# iptables -t nat -A PREROUTING -s ghost.btfh.net -d 192.174.24.105 -p tcp --dport 22 -j DNAT --to 10.0.1.15:22
 
 ## Plex
 iptables -t nat -A PREROUTING -d 192.174.24.104 -p tcp --dport 32400 -j DNAT --to 10.0.1.15:32400
+iptables -t nat -A PREROUTING -s chris.btfh.net -d 192.174.24.104 -p tcp --dport 22 -j DNAT --to 10.0.1.15:22
 
-
-
+## UniFi Controller .106
+iptables -t nat -A PREROUTING -d 192.174.24.106 -p tcp --dport 8080 -j DNAT --to 10.0.1.17:8080
+iptables -t nat -A PREROUTING -d 192.174.24.106 -p tcp --dport 8443 -j DNAT --to 10.0.1.17:8443
+iptables -t nat -A PREROUTING -d 192.174.24.106 -p tcp --dport 80 -j DNAT --to 10.0.1.17:8080
+iptables -t nat -A PREROUTING -d 192.174.24.106 -p tcp --dport 443 -j DNAT --to 10.0.1.17:8443
+iptables -t nat -A PREROUTING -d 192.174.24.106 -p tcp --dport 8880 -j DNAT --to 10.0.1.17:8880
+iptables -t nat -A PREROUTING -d 192.174.24.106 -p tcp --dport 3478 -j DNAT --to 10.0.1.17:3478

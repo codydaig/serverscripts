@@ -1,0 +1,57 @@
+# Setting up a Router on a Ubuntu Machine (with PPPoE)
+
+## Network Adapters
+
+### Enabling Network Adapters
+How to enable ethernet ports https://askubuntu.com/questions/965343/enabling-and-disabling-network-card-through-commandline
+
+
+### Disable System D crap
+```
+systemctl disable systemd-resolved.service
+systemctl stop systemd-resolved
+rm /etc/resolv.conf
+touch /etc/resolv.conf
+```
+
+Add the following to resolv.conf
+```
+nameserver 1.1.1.1
+nameserver 8.8.8.8
+```
+
+### to rename nic to eth0
+
+first, get rid of netplan (not all versions will have it) and add in
+```
+ifupdown scripts
+apt remove netplan
+apt install ifupdown
+```
+
+```
+touch /etc/udev/rules.d/70-persistent-net.rules
+```
+
+edit it, and add this line (change mac address as required)
+```
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*",ATTR{address}=="02:01:02:03:04:05", ATTR{dev_id}=="0x0",ATTR{type}=="1", NAME="eth0"
+```
+
+edit /etc/network/interfaces and rename the nic to eth0
+
+Here's what my /etc/network/interfaces looks like now
+
+```
+
+```
+
+###Enabling PPPoE 
+
+https://help.ubuntu.com/community/ADSLPPPoE
+
+## Wireguard
+
+apt install wireguard
+
+https://www.stavros.io/posts/how-to-configure-wireguard/
