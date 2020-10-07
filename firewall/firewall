@@ -20,6 +20,8 @@ iptables -A INPUT -i lo -j ACCEPT
 
 ## allow wireguard traffic
 iptables -A INPUT -i wg0 -j ACCEPT
+#iptables -A INPUT -d 192.174.24.104 -p tcp --dport 52813 -j ACCEPT
+#iptables -A INPUT -d 192.174.24.104 -p udp --dport 52813 -j ACCEPT
 
 ## SSH to Router
 iptables -A INPUT -s ghost.btfh.net -d 192.174.24.104 -p tcp --dport 22 -j ACCEPT
