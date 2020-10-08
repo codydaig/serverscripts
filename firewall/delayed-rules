@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo 'waiting 15 seconds to avoid DNS race issue'
+sleep 15
+iptables -I INPUT -s ghost.btfh.net -p tcp --dport 22 -j ACCEPT
+
+iptables -t nat -A PREROUTING -s chris.btfh.net -d 192.174.24.104 -p tcp --dport 22 -j DNAT --to 10.0.1.15:22

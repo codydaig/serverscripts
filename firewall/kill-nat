@@ -2,6 +2,6 @@
 
 iptables -F
 iptables -X
-iptables -t nat -F
-iptables -t mangle -F
+#iptables -t nat -F
+#iptables -t mangle -F
 

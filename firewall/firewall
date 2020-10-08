@@ -20,17 +20,18 @@ iptables -A INPUT -i lo -j ACCEPT
 
 ## allow wireguard traffic
 iptables -A INPUT -i wg0 -j ACCEPT
-#iptables -A INPUT -d 192.174.24.104 -p tcp --dport 52813 -j ACCEPT
-#iptables -A INPUT -d 192.174.24.104 -p udp --dport 52813 -j ACCEPT
+iptables -A INPUT -d 192.174.24.104 -p udp --dport 52813 -j ACCEPT
 
-## SSH to Router
-iptables -A INPUT -s ghost.btfh.net -d 192.174.24.104 -p tcp --dport 22 -j ACCEPT
+## Allow Ryan to ssh in (the host name rule is being delayed to avoid race issues #
+#iptables -A INPUT -s ghost.btfh.net -d 192.174.24.104 -p tcp --dport 22 -j ACCEPT
+iptables -A INPUT -s 129.82.0.0/16  -d 192.174.24.104 -p tcp --dport 22 -j ACCEPT
 
 ## allow some icmp traffic and block the rest
 iptables -A INPUT -p icmp --icmp-type 0 -j ACCEPT
 iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT
 iptables -A INPUT -p icmp -j DROP
 
+# Block all incoming traffic (excluding port forwards )
 iptables -A INPUT -i ppp0    -j DROP
 iptables -A INPUT -i eth0:4  -j DROP
 iptables -A INPUT -i eth0:5  -j DROP

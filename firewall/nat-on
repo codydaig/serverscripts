@@ -10,3 +10,6 @@ $SCRIPTS/firewall
 
 # now forward ports for the servers
 $SCRIPTS/port-forward
+
+$SCRIPTS/delayed-rules
+
