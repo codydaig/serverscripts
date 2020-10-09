@@ -49,7 +49,7 @@ dpkg --purge exim4-base exim4-config exim4-daemon-light mariadb-common mysql-com
 
 
 deluser Debian-exim
-rm -r -f /home/medfly
+rm -r -f /home/codydaig
 
 
 ### running this again to fix /var/lib/dpkg/statoverride

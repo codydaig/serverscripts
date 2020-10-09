@@ -14,5 +14,5 @@ iface eth0 inet dhcp
 
 #### for static, use this
 # iface eth0 inet static
-#	address 192.168.1.50/24
-#	gateway 192.168.1.1
+#	address 10.0.1.50/24
+#	gateway 10.0.1.1
