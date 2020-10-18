@@ -41,10 +41,6 @@ header_red() {
 if [[ "$EUID" -ne 0 ]]; then
   header_red
   echo -e "${WHITE_R}#${RESET} The script need to be run as root...\\n\\n"
-  # echo -e "${WHITE_R}#${RESET} For Ubuntu based systems run the command below to login as root"
-  # echo -e "${GREEN}#${RESET} sudo -i\\n"
-  # echo -e "${WHITE_R}#${RESET} For Debian based systems run the command below to login as root"
-  # echo -e "${GREEN}#${RESET} su\\n\\n"
   exit 1
 fi
 
@@ -111,7 +107,7 @@ update_system
 
 install_utils() {
   echo -e "Installing various utilities..... \\n\\n"
-  apt -y install vim make gcc net-tools whois htop ntpdate flex bc zlib1g-dev libssl-dev psmisc smartmontools linux-headers-$(uname -r) sudo libncurses-dev bison libelf-dev ethtool at
+  apt -y install vim make gcc net-tools whois htop ntpdate flex bc zlib1g-dev libssl-dev psmisc smartmontools linux-headers-$(uname -r) sudo libncurses-dev bison libelf-dev ethtool at git
   echo -e "\\n\\n"
 }
 install_utils
@@ -159,12 +155,61 @@ crap_cleanup() {
 }
 crap_cleanup
 
-install_nginx() {
-
+install_redis() {
+  read -rp $'\033[39m#\033[0m Do you want to install redis? (Y/n) ' yes_no
+  case "$yes_no" in
+      [Yy]*|"") 
+        apt -y install redis-server
+        cp -r -v files/etc/redis/redis.conf /etc/redis/redis.conf
+        systemctl restart redis ;;
+      [Nn]*) ;;
+  esac
 }
+install_redis
+
+install_node() {
+  read -rp $'\033[39m#\033[0m Do you want to install node (with nvm)? (Y/n) ' yes_no
+  case "$yes_no" in
+      [Yy]*|"") 
+        wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+        source /root/.bashrc
+        nvm install --lts
+        nvm use --lts ;;
+      [Nn]*) ;;
+  esac
+}
+install_node
+
+install_nginx() {
+  read -rp $'\033[39m#\033[0m Do you want to install nginx? (Y/n) ' yes_no
+  case "$yes_no" in
+      [Yy]*|"") 
+        apt -y install nginx php-fpm php-mysql php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip
+        systemctl restart php7.3-fpm.service ;;
+      [Nn]*) ;;
+  esac
+}
+install_nginx
+
+
+install_mariadb() {
+  read -rp $'\033[39m#\033[0m Do you want to install MariaDB? (Y/n) ' yes_no
+  case "$yes_no" in
+      [Yy]*|"") 
+        apt -y install mariadb-server 
+        mysql_secure_installation ;;
+      [Nn]*) ;;
+  esac
+}
+install_mariadb
 
 clean_up() {
   systemctl restart ssh
+
+  apt -y update
+  apt -y dist-upgrade
+  /usr/sbin/update-grub
 }
 clean_up
 
+echo -e "\\n\\nScript complete. You should probably reboot your machine.\\n\\n"
