@@ -6,7 +6,6 @@ sh copy-script.sh
 systemctl enable rc-local
 
 
-
 ### update apt, and install a pile of crap
 apt update
 apt -y install vim make gcc net-tools whois htop ntpdate flex bc zlib1g-dev libssl-dev psmisc smartmontools iucode-tool linux-headers-$(uname -r) amd64-microcode intel-microcode sudo libncurses-dev bison libelf-dev ethtool at
