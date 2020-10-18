@@ -111,7 +111,7 @@ update_system
 
 install_utils() {
   echo -e "Installing various utilities..... \\n\\n"
-  apt -y install vim make gcc net-tools whois htop ntpdate flex bc zlib1g-dev libssl-dev psmisc smartmontools iucode-tool linux-headers-$(uname -r) amd64-microcode intel-microcode sudo libncurses-dev bison libelf-dev ethtool at
+  apt -y install vim make gcc net-tools whois htop ntpdate flex bc zlib1g-dev libssl-dev psmisc smartmontools linux-headers-$(uname -r) sudo libncurses-dev bison libelf-dev ethtool at
   echo -e "\\n\\n"
 }
 install_utils
@@ -158,3 +158,13 @@ crap_cleanup() {
   cp -r -v files/var/lib/dpkg/statoverride /var/lib/dpkg/statoverride
 }
 crap_cleanup
+
+install_nginx() {
+
+}
+
+clean_up() {
+  systemctl restart ssh
+}
+clean_up
+
