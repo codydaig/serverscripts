@@ -14,14 +14,14 @@
 #####
 #     USA Spammers (consider unblocking in future)
 #####                                               ## ISP / Provider       | Location          | Date Added
-/sbin/iptables -A INPUT -s 23.97.75.130 -j DROP     ## Microsoft            | Redmond, WA       | 20150627
-/sbin/iptables -A INPUT -s 24.156.121.40 -j DROP    ## Cable Vision         | Flagstaff, AZ     | 20150621
-/sbin/iptables -A INPUT -s 74.208.218.138 -j DROP   ## 1&1                  | Chesterbrook, PA  | 20150624
-/sbin/iptables -A INPUT -s 96.10.107.162 -j DROP    ## Time Warner          | Herndon, VA       | 20150624
-/sbin/iptables -A INPUT -s 118.139.160.153 -j DROP  ## GoDaddy              |                   | 20150621
-/sbin/iptables -A INPUT -s 173.0.122.58 -j DROP     ##                      | VA                | 20150621
-/sbin/iptables -A INPUT -s 192.3.170.209 -j DROP    ## New Wave NetConnect  | Los Angelos, CA   | 20150628
-/sbin/iptables -A INPUT -s 209.126.119.15 -j DROP   ## Hosting Solutions    | Saint Louis, MO   | 20150709
+#/sbin/iptables -A INPUT -s 23.97.75.130 -j DROP     ## Microsoft            | Redmond, WA       | 20150627
+#/sbin/iptables -A INPUT -s 24.156.121.40 -j DROP    ## Cable Vision         | Flagstaff, AZ     | 20150621
+#/sbin/iptables -A INPUT -s 74.208.218.138 -j DROP   ## 1&1                  | Chesterbrook, PA  | 20150624
+#/sbin/iptables -A INPUT -s 96.10.107.162 -j DROP    ## Time Warner          | Herndon, VA       | 20150624
+#/sbin/iptables -A INPUT -s 118.139.160.153 -j DROP  ## GoDaddy              |                   | 20150621
+#/sbin/iptables -A INPUT -s 173.0.122.58 -j DROP     ##                      | VA                | 20150621
+#/sbin/iptables -A INPUT -s 192.3.170.209 -j DROP    ## New Wave NetConnect  | Los Angelos, CA   | 20150628
+#/sbin/iptables -A INPUT -s 209.126.119.15 -j DROP   ## Hosting Solutions    | Saint Louis, MO   | 20150709
 
 #####
 #     International Hackers
@@ -30,11 +30,17 @@
 /sbin/iptables -A INPUT -s 5.63.154.147 -j DROP
 /sbin/iptables -A INPUT -s 5.63.155.178 -j DROP
 /sbin/iptables -A INPUT -s 5.79.71.5 -j DROP
+/sbin/iptables -A INPUT -s 12.161.62.186 -j DROP #2020-11-04
+/sbin/iptables -A INPUT -s 13.111.102.7 -j DROP #2020-11-04
 /sbin/iptables -A INPUT -s 14.63.161.216 -j DROP
 /sbin/iptables -A INPUT -s 27.254.44.43 -j DROP
 /sbin/iptables -A INPUT -s 31.216.35.17 -j DROP
 /sbin/iptables -A INPUT -s 36.225.31.225 -j DROP
+/sbin/iptables -A INPUT -s 37.46.150.0/24 -j DROP #2020-11-03
+/sbin/iptables -A INPUT -s 37.49.225.0/24 -j DROP #2020-11-04
 /sbin/iptables -A INPUT -s 41.160.6.194 -j DROP
+/sbin/iptables -A INPUT -s 45.154.35.213 -j DROP
+/sbin/iptables -A INPUT -s 45.154.255.147 -j DROP #2020-11-04
 /sbin/iptables -A INPUT -s 58.67.199.9 -j DROP
 /sbin/iptables -A INPUT -s 58.215.160.219 -j DROP
 /sbin/iptables -A INPUT -s 59.46.220.178 -j DROP
@@ -136,9 +142,11 @@
 /sbin/iptables -A INPUT -s 144.76.116.180 -j DROP
 /sbin/iptables -A INPUT -s 150.67.4.236 -j DROP
 /sbin/iptables -A INPUT -s 151.80.93.2 -j DROP
+/sbin/iptables -A INPUT -s 162.142.125.51 -j DROP #2020-11-04
 /sbin/iptables -A INPUT -s 162.209.69.74 -j DROP
 /sbin/iptables -A INPUT -s 162.250.126.81 -j DROP
 /sbin/iptables -A INPUT -s 168.1.13.117 -j DROP
+/sbin/iptables -A INPUT -s 170.130.34.0/24 -j DROP #2020-11-03
 /sbin/iptables -A INPUT -s 176.74.217.6 -j DROP
 /sbin/iptables -A INPUT -s 177.3.150.222 -j DROP
 /sbin/iptables -A INPUT -s 178.15.39.2 -j DROP
@@ -165,6 +173,9 @@
 /sbin/iptables -A INPUT -s 192.99.152.37 -j DROP
 /sbin/iptables -A INPUT -s 192.201.227.77 -j DROP
 /sbin/iptables -A INPUT -s 192.232.193.130 -j DROP
+/sbin/iptables -A INPUT -s 192.241.207.112 -j DROP
+/sbin/iptables -A INPUT -s 192.241.234.29 -j DROP
+/sbin/iptables -A INPUT -s 192.241.237.144 -j DROP #2020-11-04
 /sbin/iptables -A INPUT -s 192.254.199.195 -j DROP
 /sbin/iptables -A INPUT -s 192.254.221.45 -j DROP
 /sbin/iptables -A INPUT -s 193.189.116.22 -j DROP
@@ -174,12 +185,14 @@
 /sbin/iptables -A INPUT -s 194.58.102.69 -j DROP
 /sbin/iptables -A INPUT -s 194.177.12.243 -j DROP
 /sbin/iptables -A INPUT -s 194.177.21.100 -j DROP
+/sbin/iptables -A INPUT -s 194.186.66.118 -j DROP #2020-11-04
 /sbin/iptables -A INPUT -s 195.3.144.83 -j DROP
 /sbin/iptables -A INPUT -s 195.5.208.44 -j DROP
 /sbin/iptables -A INPUT -s 195.137.213.227 -j DROP
 /sbin/iptables -A INPUT -s 195.149.74.203 -j DROP
 /sbin/iptables -A INPUT -s 195.154.173.207 -j DROP
 /sbin/iptables -A INPUT -s 195.208.201.194 -j DROP
+/sbin/iptables -A INPUT -s 195.224.173.133 -j DROP #2020-11-04
 /sbin/iptables -A INPUT -s 198.1.88.230 -j DROP
 /sbin/iptables -A INPUT -s 198.74.100.10 -j DROP
 /sbin/iptables -A INPUT -s 198.154.248.155 -j DROP
@@ -246,16 +259,17 @@
 #####
 #     Allow HTTP (80)
 #####
-#/sbin/iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+/sbin/iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+/sbin/iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 
 #####
 #     MailServer
 #####
-#/sbin/iptables -A INPUT -p tcp --dport 25 -j ACCEPT 	#SMTP
-#/sbin/iptables -A INPUT -p tcp --dport 465 -j ACCEPT	#SMTP
+/sbin/iptables -A INPUT -p tcp --dport 25 -j ACCEPT 	#SMTP
+/sbin/iptables -A INPUT -p tcp --dport 465 -j ACCEPT	#SMTP
 #/sbin/iptables -A INPUT -p tcp --dport 587 -j ACCEPT	#SMTP
 #/sbin/iptables -A INPUT -p tcp --dport 143 -j ACCEPT	#IMAP
-#/sbin/iptables -A INPUT -p tcp --dport 993 -j ACCEPT	#IMAP
+/sbin/iptables -A INPUT -p tcp --dport 993 -j ACCEPT	#IMAP
 #/sbin/iptables -A INPUT -p tcp --dport 110 -j ACCEPT	#POP3
 #/sbin/iptables -A INPUT -p tcp --dport 995 -j ACCEPT	#POP3
 
@@ -276,5 +290,4 @@
 #####
 #     Save the Settings to the iptables
 #####
-/sbin/iptables-save > /etc/iptables/rules.v4
-
+# /sbin/iptables-save > /etc/iptables/rules.v4
