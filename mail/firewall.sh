@@ -6,6 +6,8 @@
 /sbin/iptables -F
 /sbin/iptables -X
 
+## Good IP Lookup Tool https://www.ultratools.com/tools/ipWhoisLookupResult
+
 #####
 #     Add your home ip into the xxx.xxx.xxx.xxx where you access the server from the most.
 #####
