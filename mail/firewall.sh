@@ -72,6 +72,7 @@
 /sbin/iptables -A INPUT -s 79.60.10.49 -j DROP
 /sbin/iptables -A INPUT -s 80.82.64.116 -j DROP
 /sbin/iptables -A INPUT -s 80.91.193.9 -j DROP
+/sbin/iptables -A INPUT -s 80.82.77.139 -j DROP # 2020-11-07
 /sbin/iptables -A INPUT -s 81.19.145.18 -j DROP
 /sbin/iptables -A INPUT -s 81.31.35.53 -j DROP
 /sbin/iptables -A INPUT -s 81.169.146.193 -j DROP
@@ -150,6 +151,7 @@
 /sbin/iptables -A INPUT -s 162.250.126.81 -j DROP
 /sbin/iptables -A INPUT -s 168.1.13.117 -j DROP
 /sbin/iptables -A INPUT -s 170.130.34.0/24 -j DROP #2020-11-03
+/sbin/iptables -A INPUT -s 170.130.51.0/24 -j DROP #2020-11-07
 /sbin/iptables -A INPUT -s 176.74.217.6 -j DROP
 /sbin/iptables -A INPUT -s 177.3.150.222 -j DROP
 /sbin/iptables -A INPUT -s 178.15.39.2 -j DROP
@@ -164,6 +166,7 @@
 /sbin/iptables -A INPUT -s 185.40.104.7 -j DROP
 /sbin/iptables -A INPUT -s 185.63.188.78 -j DROP
 /sbin/iptables -A INPUT -s 185.68.109.161 -j DROP
+/sbin/iptables -A INPUT -s 185.220.205.213 -j DROP
 /sbin/iptables -A INPUT -s 186.101.2.130 -j DROP
 /sbin/iptables -A INPUT -s 186.121.210.50 -j DROP
 /sbin/iptables -A INPUT -s 186.147.233.125 -j DROP
