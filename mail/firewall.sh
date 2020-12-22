@@ -43,6 +43,8 @@
 /sbin/iptables -A INPUT -s 41.160.6.194 -j DROP
 /sbin/iptables -A INPUT -s 45.154.35.213 -j DROP
 /sbin/iptables -A INPUT -s 45.154.255.147 -j DROP #2020-11-04
+/sbin/iptables -A INPUT -s 50.2.211.0/24 -j DROP #2020-12-01
+/sbin/iptables -A INPUT -s 51.79.161.86 -j DROP #2020-12-01
 /sbin/iptables -A INPUT -s 58.67.199.9 -j DROP
 /sbin/iptables -A INPUT -s 58.215.160.219 -j DROP
 /sbin/iptables -A INPUT -s 59.46.220.178 -j DROP
@@ -112,6 +114,7 @@
 /sbin/iptables -A INPUT -s 95.211.43.41 -j DROP
 /sbin/iptables -A INPUT -s 98.130.1.171 -j DROP
 /sbin/iptables -A INPUT -s 103.8.124.61 -j DROP
+/sbin/iptables -A INPUT -s 104.206.0.0/16 -j DROP # Zippy Loans
 /sbin/iptables -A INPUT -s 106.75.254.109 -j DROP
 /sbin/iptables -A INPUT -s 110.170.133.22 -j DROP
 /sbin/iptables -A INPUT -s 112.65.229.76 -j DROP
@@ -150,6 +153,7 @@
 /sbin/iptables -A INPUT -s 162.209.69.74 -j DROP
 /sbin/iptables -A INPUT -s 162.250.126.81 -j DROP
 /sbin/iptables -A INPUT -s 168.1.13.117 -j DROP
+/sbin/iptables -A INPUT -s 170.130.29.0/24 -j DROP #2020-12-19
 /sbin/iptables -A INPUT -s 170.130.34.0/24 -j DROP #2020-11-03
 /sbin/iptables -A INPUT -s 170.130.51.0/24 -j DROP #2020-11-07
 /sbin/iptables -A INPUT -s 176.74.217.6 -j DROP
