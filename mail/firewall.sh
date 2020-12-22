@@ -114,7 +114,7 @@
 /sbin/iptables -A INPUT -s 95.211.43.41 -j DROP
 /sbin/iptables -A INPUT -s 98.130.1.171 -j DROP
 /sbin/iptables -A INPUT -s 103.8.124.61 -j DROP
-/sbin/iptables -A INPUT -s 104.206.0.0/16 -j DROP # Zippy Loans
+/sbin/iptables -A INPUT -s 104.206.0.0/16 -j DROP # SPAM
 /sbin/iptables -A INPUT -s 106.75.254.109 -j DROP
 /sbin/iptables -A INPUT -s 110.170.133.22 -j DROP
 /sbin/iptables -A INPUT -s 112.65.229.76 -j DROP
@@ -153,9 +153,7 @@
 /sbin/iptables -A INPUT -s 162.209.69.74 -j DROP
 /sbin/iptables -A INPUT -s 162.250.126.81 -j DROP
 /sbin/iptables -A INPUT -s 168.1.13.117 -j DROP
-/sbin/iptables -A INPUT -s 170.130.29.0/24 -j DROP #2020-12-19
-/sbin/iptables -A INPUT -s 170.130.34.0/24 -j DROP #2020-11-03
-/sbin/iptables -A INPUT -s 170.130.51.0/24 -j DROP #2020-11-07
+/sbin/iptables -A INPUT -s 170.130.0.0/16 -j DROP #2020-12-19
 /sbin/iptables -A INPUT -s 176.74.217.6 -j DROP
 /sbin/iptables -A INPUT -s 177.3.150.222 -j DROP
 /sbin/iptables -A INPUT -s 178.15.39.2 -j DROP
