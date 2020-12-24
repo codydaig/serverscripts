@@ -155,6 +155,7 @@
 /sbin/iptables -A INPUT -s 168.1.13.117 -j DROP
 /sbin/iptables -A INPUT -s 170.130.0.0/16 -j DROP #2020-12-19
 /sbin/iptables -A INPUT -s 176.74.217.6 -j DROP
+/sbin/iptables -A INPUT -s 176.111.173.11 -j DROP #2020-12-24 gigahosting
 /sbin/iptables -A INPUT -s 177.3.150.222 -j DROP
 /sbin/iptables -A INPUT -s 178.15.39.2 -j DROP
 /sbin/iptables -A INPUT -s 178.33.5.66 -j DROP
