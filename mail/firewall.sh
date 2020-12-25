@@ -152,6 +152,7 @@
 /sbin/iptables -A INPUT -s 162.142.125.51 -j DROP #2020-11-04
 /sbin/iptables -A INPUT -s 162.209.69.74 -j DROP
 /sbin/iptables -A INPUT -s 162.250.126.81 -j DROP
+/sbin/iptables -A INPUT -s 164.52.24.172 -j DROP
 /sbin/iptables -A INPUT -s 168.1.13.117 -j DROP
 /sbin/iptables -A INPUT -s 170.130.0.0/16 -j DROP #2020-12-19
 /sbin/iptables -A INPUT -s 176.74.217.6 -j DROP
