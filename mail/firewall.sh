@@ -16,14 +16,6 @@
 #####
 #     USA Spammers (consider unblocking in future)
 #####                                               ## ISP / Provider       | Location          | Date Added
-#/sbin/iptables -A INPUT -s 23.97.75.130 -j DROP     ## Microsoft            | Redmond, WA       | 20150627
-#/sbin/iptables -A INPUT -s 24.156.121.40 -j DROP    ## Cable Vision         | Flagstaff, AZ     | 20150621
-#/sbin/iptables -A INPUT -s 74.208.218.138 -j DROP   ## 1&1                  | Chesterbrook, PA  | 20150624
-#/sbin/iptables -A INPUT -s 96.10.107.162 -j DROP    ## Time Warner          | Herndon, VA       | 20150624
-#/sbin/iptables -A INPUT -s 118.139.160.153 -j DROP  ## GoDaddy              |                   | 20150621
-#/sbin/iptables -A INPUT -s 173.0.122.58 -j DROP     ##                      | VA                | 20150621
-#/sbin/iptables -A INPUT -s 192.3.170.209 -j DROP    ## New Wave NetConnect  | Los Angelos, CA   | 20150628
-#/sbin/iptables -A INPUT -s 209.126.119.15 -j DROP   ## Hosting Solutions    | Saint Louis, MO   | 20150709
 
 #####
 #     International Hackers
@@ -154,8 +146,9 @@
 /sbin/iptables -A INPUT -s 162.250.126.81 -j DROP
 /sbin/iptables -A INPUT -s 168.1.13.117 -j DROP
 /sbin/iptables -A INPUT -s 170.130.0.0/16 -j DROP #2020-12-19
+/sbin/iptables -A INPUT -s 173.44.221.0/24 -j DROP #2020-12-30
 /sbin/iptables -A INPUT -s 176.74.217.6 -j DROP
-/sbin/iptables -A INPUT -s 176.111.173.11 -j DROP #2020-12-24 gigahosting
+/sbin/iptables -A INPUT -s 176.111.173.0/24 -j DROP #2020-12-24 gigahosting
 /sbin/iptables -A INPUT -s 177.3.150.222 -j DROP
 /sbin/iptables -A INPUT -s 178.15.39.2 -j DROP
 /sbin/iptables -A INPUT -s 178.33.5.66 -j DROP
