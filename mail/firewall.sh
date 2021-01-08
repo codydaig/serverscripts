@@ -108,6 +108,7 @@
 /sbin/iptables -A INPUT -s 103.8.124.61 -j DROP
 /sbin/iptables -A INPUT -s 104.206.0.0/16 -j DROP # SPAM
 /sbin/iptables -A INPUT -s 106.75.254.109 -j DROP
+/sbin/iptables -A INPUT -s 107.158.100.0/24 -j DROP #2021-01-08
 /sbin/iptables -A INPUT -s 110.170.133.22 -j DROP
 /sbin/iptables -A INPUT -s 112.65.229.76 -j DROP
 /sbin/iptables -A INPUT -s 112.187.199.184 -j DROP
