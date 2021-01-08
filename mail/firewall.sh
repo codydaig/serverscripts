@@ -246,6 +246,10 @@
 #/sbin/iptables -A fail2ban-ssh -j RETURN
 #/sbin/iptables -I INPUT -p tcp --dport ssh -j fail2ban-ssh
 
+iptables -A INPUT -p icmp --icmp-type 0 -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT
+iptables -A INPUT -p icmp -j DROP
+
 #####
 #     Accept packets belonging to established and related connections
 #####
