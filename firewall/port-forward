@@ -8,7 +8,7 @@ iptables -t nat -A PREROUTING -d 192.174.24.104 -p tcp --dport 32400 -j DNAT --t
 ## Web .105
 iptables -t nat -A PREROUTING -d 192.174.24.105 -p tcp --dport 80 -j DNAT --to 10.0.1.20:80
 iptables -t nat -A PREROUTING -d 192.174.24.105 -p tcp --dport 443 -j DNAT --to 10.0.1.20:443
-iptables -t nat -A PREROUTING -d 192.174.24.105 -p tcp --dport 3000 -j DNAT --to 10.0.1.138:3000
+# iptables -t nat -A PREROUTING -d 192.174.24.105 -p tcp --dport 3000 -j DNAT --to 10.0.1.138:3000
 
 ## UniFi Controller .106
 iptables -t nat -A PREROUTING -d 192.174.24.106 -p tcp --dport 8080 -j DNAT --to 10.0.1.17:8080
@@ -19,3 +19,9 @@ iptables -t nat -A PREROUTING -d 192.174.24.106 -p tcp --dport 8880 -j DNAT --to
 iptables -t nat -A PREROUTING -d 192.174.24.106 -p udp --dport 3478 -j DNAT --to 10.0.1.17:3478
 
 ## mail.codybot.com .107
+iptables -t nat -A PREROUTING -d 192.174.24.107 -p tcp --dport 80 -j DNAT --to 10.0.1.19:80
+iptables -t nat -A PREROUTING -d 192.174.24.107 -p tcp --dport 443 -j DNAT --to 10.0.1.19:443
+iptables -t nat -A PREROUTING -d 192.174.24.107 -p tcp --dport 25 -j DNAT --to 10.0.1.19:25
+iptables -t nat -A PREROUTING -d 192.174.24.107 -p tcp --dport 465 -j DNAT --to 10.0.1.19:465
+iptables -t nat -A PREROUTING -d 192.174.24.107 -p tcp --dport 993 -j DNAT --to 10.0.1.19:993
+

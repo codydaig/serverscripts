@@ -2,4 +2,8 @@
 
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
+
+# hey cody, the "-o" in front of ppp0 was missing on the next line
+iptables -t nat -A POSTROUTING -s 10.0.1.19 -o ppp0 -j SNAT --to 192.174.24.107
+
 iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE

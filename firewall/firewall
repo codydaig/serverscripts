@@ -22,6 +22,11 @@ iptables -A INPUT -i lo -j ACCEPT
 iptables -A INPUT -i wg0 -j ACCEPT
 iptables -A INPUT -d 192.174.24.104 -p udp --dport 52813 -j ACCEPT
 
+## experimental block chris from internal network (blocks everything from 96 to 127)
+iptables -A FORWARD -s 10.0.5.96/27 -d 10.0.1.15 -j ACCEPT
+iptables -A FORWARD -s 10.0.5.96/27 -d 10.0.1.3 -j ACCEPT
+iptables -A FORWARD -s 10.0.5.96/27 -d 10.0.1.0/24 -j DROP
+
 ## Allow Ryan to ssh in (the host name rule is being delayed to avoid race issues #
 #iptables -A INPUT -s ghost.btfh.net -d 192.174.24.104 -p tcp --dport 22 -j ACCEPT
 iptables -A INPUT -s 129.82.0.0/16  -d 192.174.24.104 -p tcp --dport 22 -j ACCEPT
