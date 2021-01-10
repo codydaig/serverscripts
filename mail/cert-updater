@@ -1,0 +1,16 @@
+#!/bin/sh
+
+#/root/scripts/certbot renew --webroot -w /www/htdocs/vps -d vps.btfh.net --rsa-key-size 4096
+
+/root/scripts/certbot certonly --webroot -w /www/htdocs/vps   -d vps.btfh.net   --rsa-key-size 4096 --keep -n --must-staple
+
+/root/scripts/certbot certonly --webroot -w /www/htdocs/www   -d www.btfh.net   --rsa-key-size 4096 --keep -n --must-staple
+
+/root/scripts/certbot certonly --webroot -w /www/htdocs/3dgun -d 3dgun.btfh.net --rsa-key-size 4096 --keep -n --must-staple
+
+/root/scripts/certbot certonly --webroot -w /www/htdocs/mail  -d mail.btfh.net  --rsa-key-size 4096 --keep -n 
+
+/root/scripts/certbot certonly --webroot -w /www/htdocs/mail  -d webmail.btfh.net  --rsa-key-size 4096 --keep -n 
+
+postfix reload
+

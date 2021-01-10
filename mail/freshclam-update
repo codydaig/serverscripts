@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /test
+/usr/local/bin/freshclam --no-warnings > /dev/null 2>&1
