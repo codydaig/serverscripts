@@ -1,5 +1,5 @@
 #!/bin/sh
-umount /nas
-mount -t cifs //10.0.1.18/nas /nas -o username=guest
-rsync -v -a --delete /nas/* /storage/nas-backup
+#umount /nas
+#mount -t cifs //10.0.1.18/nas /nas -o username=guest
+#rsync -v -a --delete /nas/* /storage/nas-backup
 

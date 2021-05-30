@@ -1,0 +1,6 @@
+#!/bin/sh
+umount /plex
+mount -t cifs //10.0.1.18/plex /plex -o username=guest
+mount -t cifs //10.0.1.18/plex2 /plex2 -o username=guest
+rsync -v -a --delete /plex/* /plex2
+

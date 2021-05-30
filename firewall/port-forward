@@ -3,7 +3,7 @@
 # iptables -t nat -A PREROUTING -s ghost.btfh.net -d 192.174.24.105 -p tcp --dport 22 -j DNAT --to 10.0.1.15:22
 
 ## Plex
-iptables -t nat -A PREROUTING -d 192.174.24.104 -p tcp --dport 32400 -j DNAT --to 10.0.1.15:32400
+iptables -t nat -A PREROUTING -d 192.174.24.104 -p tcp --dport 32400 -j DNAT --to 10.0.1.18:32400
 
 ## Web .105
 iptables -t nat -A PREROUTING -d 192.174.24.105 -p tcp --dport 80 -j DNAT --to 10.0.1.20:80
@@ -25,3 +25,5 @@ iptables -t nat -A PREROUTING -d 192.174.24.107 -p tcp --dport 25 -j DNAT --to 1
 iptables -t nat -A PREROUTING -d 192.174.24.107 -p tcp --dport 465 -j DNAT --to 10.0.1.19:465
 iptables -t nat -A PREROUTING -d 192.174.24.107 -p tcp --dport 993 -j DNAT --to 10.0.1.19:993
 
+# maps.codydaig.me .108
+iptables -t nat -A PREROUTING -d 192.174.24.108 -p tcp --dport 80 -j DNAT --to 10.0.1.21:80
