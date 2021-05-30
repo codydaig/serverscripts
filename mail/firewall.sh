@@ -36,6 +36,7 @@
 /sbin/iptables -A INPUT -s 45.154.35.213 -j DROP
 /sbin/iptables -A INPUT -s 45.154.255.147 -j DROP #2020-11-04
 /sbin/iptables -A INPUT -s 50.2.211.0/24 -j DROP #2020-12-01
+/sbin/iptables -A INPUT -s 50.3.175.0/24 -j DROP #2021-01-16
 /sbin/iptables -A INPUT -s 51.79.161.86 -j DROP #2020-12-01
 /sbin/iptables -A INPUT -s 58.67.199.9 -j DROP
 /sbin/iptables -A INPUT -s 58.215.160.219 -j DROP
@@ -138,6 +139,7 @@
 /sbin/iptables -A INPUT -s 141.8.194.36 -j DROP
 /sbin/iptables -A INPUT -s 141.255.181.43 -j DROP
 /sbin/iptables -A INPUT -s 143.95.81.30 -j DROP
+/sbin/iptables -A INPUT -s 141.98.10.0/24 -j DROP #2021-02-06
 /sbin/iptables -A INPUT -s 144.76.92.177 -j DROP
 /sbin/iptables -A INPUT -s 144.76.116.180 -j DROP
 /sbin/iptables -A INPUT -s 150.67.4.236 -j DROP
@@ -149,6 +151,7 @@
 /sbin/iptables -A INPUT -s 168.1.13.117 -j DROP
 /sbin/iptables -A INPUT -s 170.130.0.0/16 -j DROP #2020-12-19
 /sbin/iptables -A INPUT -s 173.44.221.0/24 -j DROP #2020-12-30
+/sbin/iptables -A INPUT -s 173.232.87.0/24 -j DROP #2021-02-08
 /sbin/iptables -A INPUT -s 176.74.217.6 -j DROP
 /sbin/iptables -A INPUT -s 176.111.173.0/24 -j DROP #2020-12-24 gigahosting
 /sbin/iptables -A INPUT -s 177.3.150.222 -j DROP
